@@ -17,7 +17,7 @@ let levels = {};
 app.get("/level/:id", (req, res) => {
     const levelId = req.params.id;
     const filePath = path.join(__dirname, "levels", `${levelId}.json`)
-
+    
     fs.readFile(filePath, "utf8", (err, data) => {
         if (err) {
             console.error("Error reading level data: ", err);
@@ -48,6 +48,21 @@ app.post("/level/:id", (req, res) => {
 });
 
 //we would continue by doing a put and a delete id.
+
+// response should be the level, request should be the level id
+app.put("/levels/:id", (req,res) => {
+    levelId = req.params.id;
+    const filePath = path.join(__dirname, "levels", `${levelId}.json`)
+
+    if (!Array.isArray(levelData) || levelData.length === 0) {
+        return res.status(404).send("Level data must be an non-empty array");
+    };
+
+    // fs.readFile(filePath, () => {
+
+    // })
+})
+
 
 // get all levels at the same time
 app.get("/levels", (req, res) => {

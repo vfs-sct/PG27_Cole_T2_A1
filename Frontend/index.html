@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Level Editor</title>
+        <title>QLE - Level Editor</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>Level Editor</h1>
+        <h1 id="title-text">QLE</h1>
         <div id="toolbox">
             <button id="add-block">Add Block</button>
+            <button id="clear-blocks">Clear Blocks</button>
             <!-- TODO: add more tools! -->
         </div>
         <div id="editor"></div>
 
-        <button id="save-level">Save Level</button>
-        <input type="text" id="level-id" placeholder="Enter Level ID">
-        <button id="load-level">Load Level</button>
-        <select id="level-list">
-            <option value="">Select a level</option>
-        </select>
+        <div>
 
+        <div class="level-management">
+
+            <div id="additive-options">
+
+                <button id="save-level">Save Level</button>
+                <button id="rename-level">Rename</button>
+                <input type="text" id="level-id" placeholder="Enter Level ID">
+            </div>
+
+            <div id="destructive-options">
+
+                <button id="load-level">Load Level</button>
+                <select id="level-list">
+                    <option value="">Select a level</option>
+                </select>
+                <button id="delete-level">Delete Level</button>
+            </div>
+        </div>
+        
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css"> 
