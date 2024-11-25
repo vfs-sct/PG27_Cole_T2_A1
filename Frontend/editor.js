@@ -1,5 +1,28 @@
 $(function () {
     let blockCounter = 0;
+    function clearBlocks() {
+        let editorWindow = document.querySelector("#editor")
+        editorWindow.innerHTML = '';
+    }
+
+    function loadLevelList() {
+        $.ajax({
+            url: "http://localhost:3000/levels",
+            method: "GET",
+            success: function (levelIds) {
+                const $levelList = $("#level-list");
+                $levelList.empty();
+                $levelList.append('<option value="">Select a Level</option>');
+                levelIds.forEach(function (id) {
+                    $levelList.append(`<option value="${id}">${id}</option>`)
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error("Error fetching level list:", error);
+            }
+        });
+    };
+
     function createBlock(type, css)
     {
         const blockId = `block-${blockCounter++}`;
@@ -37,8 +60,6 @@ $(function () {
             left: 0
         }));
 
-    //TODO: the clear function
-
     $("#clear-blocks").click ( () => {
 
         if(confirm("Are you sure you want to clear all blocks from the window?"))
@@ -47,30 +68,7 @@ $(function () {
         }
     });
 
-    function clearBlocks() {
-        let editorWindow = document.querySelector("#editor")
-        editorWindow.innerHTML = '';
-    }
-
-    function loadLevelList() {
-        $.ajax({
-            url: "http://localhost:3000/levels",
-            method: "GET",
-            success: function (levelIds) {
-                const $levelList = $("#level-list");
-                $levelList.empty();
-                $levelList.append('<option value="">Select a Level</option>');
-                levelIds.forEach(function (id) {
-                    $levelList.append(`<option value="${id}">${id}</option>`)
-                });
-            },
-            error: function(xhr, status, error) {
-                console.error("Error fetching level list:", error);
-            }
-        });
-    };
-
-    $("#load-level").click(function () {
+    $("#load-level").click(() => {
         const $levelList = $("#level-list");
         const selectedElement = document.querySelector('#level-list');
         const level = selectedElement.options[selectedElement.selectedIndex].value;
@@ -110,13 +108,12 @@ $(function () {
         }
     })
 
-    $("#save-level").click(function () {
+    $("#save-level").click( () => {
         const levelId = $("#level-id").val().trim();
 
         if(!levelId) {
             alert("Pleave enter a level ID");
-            return;
-            
+            return;         
         }
 
         const levelData = [];
@@ -153,5 +150,47 @@ $(function () {
             }
         });
     });
+
+    $("#rename-level").click( () => {
+
+        const options = $("#additive-options");
+        const renameInput = $("<input type='text' id='new-level-id' placeholder='New Level ID'>");
+        let levelSelected = $("#level-id").replaceWith("<select id='level-list'> <option value=''>Select a level</option> </select>");
+        levelSelected.id = "level-load-list";
+        let newLevelId;
+
+        if(document.getElementById("new-level-id") === null)
+        {
+            options.append(renameInput);
+            loadLevelList();
+            return;
+        }
+
+        newLevelId = $("#new-level-id").val().trim()
+        
+        if(!newLevelId)
+        {
+            alert("Please enter a valid name.")
+            return;
+        }
+        const selectedElement = document.querySelector('#level-list');
+        const level = selectedElement.options[selectedElement.selectedIndex].value;
+        levelSelected = $("#level-list").replaceWith("<input type='text' id='level-id' placeholder='Enter Level ID'></input>")
+        document.querySelector("#additive-options").removeChild(document.querySelector("#new-level-id"));
+
+        $.ajax({
+            url: 'http://localhost:3000/level/' + encodeURIComponent(level),
+            method: "PATCH",
+            contentType: "text/plain",
+            data: newLevelId,
+            success: function (response) {
+                alert(response);
+                loadLevelList();
+            },
+            error: function (xhr, status, error) {
+                alert("Error renaming level: " + xhr.responseText);
+            }
+        });
+    })
     loadLevelList();
 });

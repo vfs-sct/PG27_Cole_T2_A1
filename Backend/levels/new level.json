@@ -1,0 +1,42 @@
+[
+  {
+    "id": "block-0",
+    "x": 214,
+    "y": 151,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-1",
+    "x": 280,
+    "y": 153,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-2",
+    "x": 250,
+    "y": 40,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-3",
+    "x": 250,
+    "y": 85,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-4",
+    "x": 250,
+    "y": 127,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  }
+]

@@ -30,7 +30,7 @@ app.get("/level/:id", (req, res) => {
 // Saves a level
 app.post("/level/:id", (req, res) => {
     const levelId = req.params.id;
-    const filePath = path.join(__dirname, "levels", `${levelId}.json`)
+    const filePath = path.join(__dirname, "levels", `${levelId}.json`);
     const levelData = req.body;
 
     if (!Array.isArray(levelData) || levelData.length === 0) {
@@ -49,18 +49,22 @@ app.post("/level/:id", (req, res) => {
 
 //we would continue by doing a put and a delete id.
 
-// response should be the level, request should be the level id
-app.put("/levels/:id", (req,res) => {
-    levelId = req.params.id;
-    const filePath = path.join(__dirname, "levels", `${levelId}.json`)
+app.patch("/levels/:id", (req, res) => {
+    //const levelId = req.params.id;
+    //const oldFilePath = path.join(__dirname, "levels", `${levelId}.json`);
+    //const newFilePath = path.join(__dirname, "levels", `${req.body}.json`);
+    
+    //res.status(200).send(`${levelId} has been renamed to ${req.body}`);
+    console.error("yaaa");
 
-    if (!Array.isArray(levelData) || levelData.length === 0) {
-        return res.status(404).send("Level data must be an non-empty array");
-    };
-
-    // fs.readFile(filePath, () => {
-
-    // })
+    // fs.reaname(oldFilePath,newFilePath, (err) => {
+    //     console.log(oldFilePath);
+    //     console.log(newFilePath);
+    //     if(err) {
+    //         console.error("Error renaming level: ", err);
+    //         return res.status(500).send("Server error");
+    //     }
+    // });
 })
 
 
