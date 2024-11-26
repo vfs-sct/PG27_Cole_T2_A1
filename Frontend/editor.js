@@ -154,43 +154,52 @@ $(function () {
     $("#rename-level").click( () => {
 
         const options = $("#additive-options");
-        const renameInput = $("<input type='text' id='new-level-id' placeholder='New Level ID'>");
+        const renameInput = $(`
+                <form name="rename-form" id="name-input">
+                    <input type='text' id='new-level-id' placeholder='New Level ID'>
+                    <input type='submit'>
+                </form>
+            `);
         let levelSelected = $("#level-id").replaceWith("<select id='level-list'> <option value=''>Select a level</option> </select>");
         levelSelected.id = "level-load-list";
-        let newLevelId;
 
         if(document.getElementById("new-level-id") === null)
         {
             options.append(renameInput);
             loadLevelList();
-            return;
-        }
-
-        newLevelId = $("#new-level-id").val().trim()
-        
-        if(!newLevelId)
-        {
-            alert("Please enter a valid name.")
-            return;
-        }
-        const selectedElement = document.querySelector('#level-list');
-        const level = selectedElement.options[selectedElement.selectedIndex].value;
-        levelSelected = $("#level-list").replaceWith("<input type='text' id='level-id' placeholder='Enter Level ID'></input>")
-        document.querySelector("#additive-options").removeChild(document.querySelector("#new-level-id"));
-
-        $.ajax({
-            url: 'http://localhost:3000/level/' + encodeURIComponent(level),
-            method: "PATCH",
-            contentType: "text/plain",
-            data: newLevelId,
-            success: function (response) {
-                alert(response);
+            document.querySelector("#rename-level").innerHTML = "Cancel";
+            $("form").submit(function() {
+            
+                const newLevelId = $("#new-level-id").val().trim()        
+                const selectedElement = document.querySelector('#level-list');
+                const level = selectedElement.options[selectedElement.selectedIndex].value;
+                
+                if(!newLevelId)
+                {
+                    alert("Please enter a valid name.")
+                    return;
+                }    
+    
+                $.ajax({
+                    url: 'http://localhost:3000/level/' + encodeURIComponent(level),
+                    method: 'PUT',
+                    contentType: "application/json",
+                    data: JSON.stringify({"name": newLevelId}),
+                    success: function (response) {
+                        alert(response);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error renaming level: " + xhr.responseText);
+                    }
+                });
                 loadLevelList();
-            },
-            error: function (xhr, status, error) {
-                alert("Error renaming level: " + xhr.responseText);
-            }
-        });
-    })
+            })   
+            return;
+        }
+
+        levelSelected = $("#level-list").replaceWith("<input type='text' id='level-id' placeholder='Enter Level ID'></input>")
+        document.querySelector("#additive-options").removeChild(document.querySelector("#name-input"));
+        document.querySelector("#rename-level").innerHTML = "Rename";
+    });
     loadLevelList();
 });

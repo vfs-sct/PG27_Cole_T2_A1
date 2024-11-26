@@ -1,40 +1,32 @@
 [
   {
     "id": "block-0",
-    "x": 214,
-    "y": 151,
+    "x": 531,
+    "y": 213,
     "width": 50,
     "height": 50,
     "type": "block"
   },
   {
     "id": "block-1",
-    "x": 280,
-    "y": 153,
+    "x": 568,
+    "y": 208,
     "width": 50,
     "height": 50,
     "type": "block"
   },
   {
     "id": "block-2",
-    "x": 250,
-    "y": 40,
+    "x": 553,
+    "y": 291,
     "width": 50,
     "height": 50,
     "type": "block"
   },
   {
     "id": "block-3",
-    "x": 250,
-    "y": 85,
-    "width": 50,
-    "height": 50,
-    "type": "block"
-  },
-  {
-    "id": "block-4",
-    "x": 250,
-    "y": 127,
+    "x": 553,
+    "y": 248,
     "width": 50,
     "height": 50,
     "type": "block"

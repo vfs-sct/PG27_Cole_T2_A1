@@ -47,24 +47,39 @@ app.post("/level/:id", (req, res) => {
     });
 });
 
-//we would continue by doing a put and a delete id.
+// renames a level
+app.put("/level/:id", (req, res) => {
+    const levelId = req.params.id;
+    const oldFilePath = path.join(__dirname, "levels", `${levelId}.json`);
+    const newFilePath = path.join(__dirname, "levels", `${req.body["name"]}.json`);
 
-app.patch("/levels/:id", (req, res) => {
-    //const levelId = req.params.id;
-    //const oldFilePath = path.join(__dirname, "levels", `${levelId}.json`);
-    //const newFilePath = path.join(__dirname, "levels", `${req.body}.json`);
-    
-    //res.status(200).send(`${levelId} has been renamed to ${req.body}`);
-    console.error("yaaa");
+    if(fs.existsSync(newFilePath))
+    {
+        res.status(500).send("This name already exists. you cannot rename a file to this name wihout first deleting or renaming the already existing file.");
+        return;
+    }
 
-    // fs.reaname(oldFilePath,newFilePath, (err) => {
-    //     console.log(oldFilePath);
-    //     console.log(newFilePath);
-    //     if(err) {
-    //         console.error("Error renaming level: ", err);
-    //         return res.status(500).send("Server error");
-    //     }
-    // });
+    fs.rename(oldFilePath, newFilePath, (err) => {
+        if(err) {
+            console.error("Error renaming level: ", err);
+            return res.status(500).send("Server error");
+        }
+        res.send(`Level Successfully renamed to ${req.body["name"]}`);
+    });
+})
+
+// deletes a level
+app.delete("/level/:id", (req, res) => {
+    const levelId = req.params.id;
+    const filePath = path.join(__dirname, "levels", `${levelId}.json`);
+
+    fs.unlink(filePath, (err) => {
+        if(err) {
+            console.error("Error removing level: ", err);
+            return res.status(500).send("Server error");
+        }
+    })
+    res.send("Level successfully deleted");
 })
 
 

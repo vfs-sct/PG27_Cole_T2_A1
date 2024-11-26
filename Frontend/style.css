@@ -9,11 +9,6 @@ body {
     opacity: 1;
 }
 
-    #title-text:hover {
-        transition: opacity 1s;
-        opacity: 0.5;
-    }
-
 #toolbox {
     margin-bottom: 15px;
 }
@@ -21,15 +16,14 @@ body {
         display: flex-inline;
         border: solid black 1px;
         border-radius: 5px;
-        transition: all 0.5s ease-in-out;
+        transition: all 0.25s ease-in-out;
         margin-left: 5px;
         margin-right: 5px;
     }
 
     #toolbox button:hover {
-        transition: all 0.5s ease-in-out;
-        margin: 10px;
-        padding: 10px;
+        transition: all 0.25s ease-in-out;
+        padding: 8px;
     }
     
     #add-block:hover {
@@ -73,8 +67,6 @@ body {
     justify-content: center;
     align-items: center;
     transition: background-color 0.3s ease-in-out;
-    width: 200px;
-    height: auto;
     padding: 25px;
     margin-bottom: 10px;
     margin-top: 10px;
@@ -90,4 +82,9 @@ body {
 #additive-options button {     
     margin: 5px;
     margin-left: 0px;
+}
+
+#additive-options input {
+    margin: 5px;
+    padding: 2px;
 }
