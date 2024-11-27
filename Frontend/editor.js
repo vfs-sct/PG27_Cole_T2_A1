@@ -169,7 +169,8 @@ $(function () {
             options.append(renameInput);
             loadLevelList();
             document.querySelector("#rename-level").innerHTML = "Cancel";
-            $("form").submit(() => {
+            $("form").submit(function(event) {
+                event.preventDefault();
                 const newLevelId = $("#new-level-id").val().trim()        
                 const selectedElement = document.querySelector('#level-list');
                 const level = selectedElement.options[selectedElement.selectedIndex].value;
@@ -187,11 +188,12 @@ $(function () {
                     data: JSON.stringify({"name": newLevelId}),
                     success: function (response) {
                         alert(response);
+                        loadLevelList();
                     },
                     error: function (xhr, status, error) {
                         alert("Error renaming level: " + xhr.responseText);
                     }
-                });
+                });  
             })   
             return;
         }
@@ -228,5 +230,6 @@ $(function () {
             })
         }
     });
+
     loadLevelList();
 });
