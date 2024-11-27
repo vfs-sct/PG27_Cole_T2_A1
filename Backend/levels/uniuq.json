@@ -1,0 +1,154 @@
+[
+  {
+    "id": "block-0",
+    "x": 191,
+    "y": 193,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-1",
+    "x": 217,
+    "y": 225,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-2",
+    "x": 253,
+    "y": 257,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-3",
+    "x": 297,
+    "y": 231,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-4",
+    "x": 336,
+    "y": 215,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-5",
+    "x": 379,
+    "y": 242,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-6",
+    "x": 426,
+    "y": 249,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-7",
+    "x": 453,
+    "y": 221,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-8",
+    "x": 446,
+    "y": 295,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-9",
+    "x": 448,
+    "y": 205,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-10",
+    "x": 438,
+    "y": 316,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-11",
+    "x": 489,
+    "y": 221,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-12",
+    "x": 468,
+    "y": 252,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-13",
+    "x": 489,
+    "y": 262,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-14",
+    "x": 485,
+    "y": 305,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-15",
+    "x": 494,
+    "y": 298,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-16",
+    "x": 520,
+    "y": 283,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-17",
+    "x": 515,
+    "y": 240,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  },
+  {
+    "id": "block-18",
+    "x": 504,
+    "y": 229,
+    "width": 50,
+    "height": 50,
+    "type": "block"
+  }
+]

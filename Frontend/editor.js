@@ -109,15 +109,10 @@ $(function () {
     })
 
     $("#save-level").click( () => {
-        const levelId = $("#level-id").val().trim();
-
-        if(!levelId) {
-            alert("Pleave enter a level ID");
-            return;         
-        }
-
+        const levelId = prompt("Enter a level name")
+        
         const levelData = [];
-
+        
         $(".block").each(function () {
             const $this = $(this);
             const position = $this.position();
@@ -130,12 +125,17 @@ $(function () {
                 type: "block"    
             });
         });
-
+        
         if(levelData.length === 0) {
             alert("The level is empty. Add some blocks before saving.");
             return;
         }
-
+        
+        if(!levelId) {
+            alert("Pleave enter a level ID");
+            return;         
+        }
+        
         $.ajax({
             url: 'http://localhost:3000/level/' + encodeURIComponent(levelId),
             method: "POST",
@@ -151,6 +151,7 @@ $(function () {
         });
     });
 
+    //not getting server response, but it works
     $("#rename-level").click( () => {
 
         const options = $("#additive-options");
@@ -160,16 +161,15 @@ $(function () {
                     <input type='submit'>
                 </form>
             `);
-        let levelSelected = $("#level-id").replaceWith("<select id='level-list'> <option value=''>Select a level</option> </select>");
-        levelSelected.id = "level-load-list";
-
+        const levelSelected = $("<select id='level-list'> <option value=''>Select a level</option> </select>");
+        
         if(document.getElementById("new-level-id") === null)
         {
+            options.append(levelSelected);
             options.append(renameInput);
             loadLevelList();
             document.querySelector("#rename-level").innerHTML = "Cancel";
-            $("form").submit(function() {
-            
+            $("form").submit(() => {
                 const newLevelId = $("#new-level-id").val().trim()        
                 const selectedElement = document.querySelector('#level-list');
                 const level = selectedElement.options[selectedElement.selectedIndex].value;
@@ -192,14 +192,41 @@ $(function () {
                         alert("Error renaming level: " + xhr.responseText);
                     }
                 });
-                loadLevelList();
             })   
             return;
         }
 
-        levelSelected = $("#level-list").replaceWith("<input type='text' id='level-id' placeholder='Enter Level ID'></input>")
         document.querySelector("#additive-options").removeChild(document.querySelector("#name-input"));
+        document.querySelector("#additive-options").removeChild(document.querySelector("#level-list"));
         document.querySelector("#rename-level").innerHTML = "Rename";
+    });
+
+    $("#delete-level").click( () => {
+        const options = $("#destructive-options");
+        const selectedElement = document.querySelector('#level-list');
+        const level = selectedElement.options[selectedElement.selectedIndex].value;
+
+        if(!level) {
+            alert("No level was selected to delete.");
+            return;
+        }
+
+        if(confirm(`are you sure you want to delete ${level}`))
+        {
+            $.ajax({
+                url: 'http://localhost:3000/level/' + encodeURIComponent(level),
+                method: 'DELETE',
+                contentType: "application/json",
+                success: function (response) {
+                    alert(response);
+                    clearBlocks();
+                    loadLevelList();
+                },
+                error: function (xhr, status, error) {
+                    alert("error renaming level: " + xhr.responseText);
+                }
+            })
+        }
     });
     loadLevelList();
 });
