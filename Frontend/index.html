@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>QLE - Level Editor</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <h1 id="title-text">QLE</h1>
-        <div id="toolbox">
-            <button id="add-block">Add Block</button>
-            <button id="clear-blocks">Clear Blocks</button>
-            <!-- TODO: add more tools! -->
-        </div>
-        <div id="editor"></div>
 
-        <div>
+<head>
+    <title>QLE - Level Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 id="title-text">QLE</h1>
+    <div id="toolbox">
+        <button id="add-static-block" class="tool">Add Static Block</button>
+        <button id="add-dynamic-block" class="tool">Add Dynamic Block</button>
+        <button id="add-small-enemy" class="tool">Add Small Enemy</button>
+        <button id="add-large-enemy" class="tool">Add Large Enemy</button>
+        <button id="add-circle" class="tool">Add Cicle</button>
+        <button id="clear-blocks" class="tool">Clear Blocks</button>
+        <!-- TODO: add more tools! -->
+    </div>
+    <div id="editor"></div>
+
+    <div>
 
         <div class="level-management">
 
@@ -26,16 +32,17 @@
             <div id="destructive-options">
 
                 <button id="load-level">Load Level</button>
+                <button id="delete-level">Delete Level</button>
                 <select id="level-list">
                     <option value="">Select a level</option>
                 </select>
-                <button id="delete-level">Delete Level</button>
             </div>
         </div>
-        
+
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css"> 
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
         <script src="editor.js"></script>
-    </body>
+</body>
+
 </html>

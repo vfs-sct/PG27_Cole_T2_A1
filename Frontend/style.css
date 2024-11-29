@@ -12,49 +12,100 @@ body {
 #toolbox {
     margin-bottom: 15px;
 }
-    #toolbox button {
-        display: flex-inline;
-        border: solid black 1px;
-        border-radius: 5px;
-        transition: all 0.25s ease-in-out;
-        margin-left: 5px;
-        margin-right: 5px;
-    }
 
-    #toolbox button:hover {
-        transition: all 0.25s ease-in-out;
-        padding: 8px;
-    }
-    
-    #add-block:hover {
-        color: white;
-        background-color: green;
-    }
 
-    #clear-blocks:hover {
-        color: white;
-        background-color: red;
-    }
+.tool {
+    display: flex-inline;
+    border: solid black 1px;
+    border-radius: 5px;
+    transition: all 0.25s ease-in-out;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.tool:hover {
+    transition: all 0.25s ease-in-out;
+    padding: 8px;
+    color: white;
+    background-color: green;
+}
+
+#clear-blocks:hover {
+    color: white;
+    background-color: red;
+}
 
 #editor {
-    width:800;
+    width: 800;
     height: 600px;
     border: 1px solid #333;
     position: relative;
     background-color: #f0f0f0;
 }
 
-.block {
-  width: 50px;
-  height: 50px;
-  background-color: #ff6600;
-  position: absolute;
-  cursor: move;  
+.static-block {
+    width: 50px;
+    height: 50px;
+    background-color: #ff6600;
+    position: absolute;
+    cursor: move;
 }
-    .block:hover
-    {
-        opacity: 0.8;
-    }
+
+.static-block:hover {
+    opacity: 0.8;
+}
+
+.dynamic-block {
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+    position: absolute;
+    cursor: move;
+}
+
+.dynamic-block:hover {
+    opacity: 0.8;
+}
+
+.small-enemy {
+    width: 30px;
+    height: 30px;
+    background-color: green;
+    position: absolute;
+    cursor: move;
+    border-radius: 50%;
+}
+
+.small-enemy:hover {
+    opacity: 0.8;
+}
+
+.large-enemy {
+    width: 50px;
+    height: 50px;
+    background-color: darkolivegreen;
+    position: absolute;
+    cursor: move;
+    border-radius: 50%;
+}
+
+.large-enemy:hover {
+    opacity: 0.8;
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    background-color: blue;
+    position: absolute;
+    cursor: move;
+    border-radius: 50%;
+}
+
+.large-enemy:hover {
+    opacity: 0.8;
+}
+
 
 .level-management {
     display: flex;
@@ -79,12 +130,111 @@ body {
     background-color: gainsboro;
 }
 
-#additive-options button {     
+#rename-level {
+    transition: all 0.25s;
     margin: 5px;
     margin-left: 0px;
+    border-radius: 8px;
 }
 
-#additive-options input {
+#rename-level:hover {
+    transition: all 0.25s;
+    padding: 8px;
+}
+
+
+#save-level {
+    transition: all 0.25s;
+    margin: 5px;
+    margin-left: 0px;
+    border-radius: 8px;
+}
+
+#save-level:hover {
+    transition: all 0.25s;
+    padding: 8px;
+    background-color: green;
+    color: white;
+}
+
+#new-level-id {
+    transition: all 0.25s;
+    margin: 5px;
+    border-radius: 6px;
+}
+
+#new-level-id:hover {
+    transition: all 0.25s;   
+    padding: 8px; 
+    border-radius: 2px;
+}
+
+#submit-new-name {
+    transition: all 0.25s;
+    margin: 5px;
+    border-radius: 2px;
+}
+
+#submit-new-name:hover {
+    transition: all 0.25s;
+    padding: 8px;
+    background-color: green;
+    color: white;
+    border-radius: 12px;
+
+}
+
+#destructive-options {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.1s ease-in-out;
+    padding: 25px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 12px;
+    background-color: white;
+}
+
+#destructive-options:hover {
+    transition: background-color 0.25s ease-in-out;
+    background-color: gainsboro;
+}
+
+#destructive-options button {
+    transition: all 0.25s;
+    margin: 5px;
+    margin-left: 0px;
+    border-radius: 8px;
+}
+
+#destructive-options button:hover {
+    transition: all 0.25s;
+    padding: 8px;  
+}
+
+#delete-level:hover {
+    transition: all 0.25s;
+    color: white;
+    background-color:red;
+}
+
+#level-list {
+    transition: all 0.25s;
     margin: 5px;
     padding: 2px;
+    border-radius: 12px;
+}
+
+#level-list:hover {
+    transition: all 0.25s;
+    color: gainsboro;
+    background-color: grey;
+    padding: 8px;
+}
+
+#level-list option {
+    color: gainsboro;
+    background-color: grey;
+    padding: 5px;
 }
