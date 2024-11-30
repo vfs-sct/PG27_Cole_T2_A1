@@ -30,6 +30,10 @@ body {
     background-color: green;
 }
 
+#clear-blocks {
+    float: right;
+}
+
 #clear-blocks:hover {
     color: white;
     background-color: red;
@@ -102,7 +106,19 @@ body {
     border-radius: 50%;
 }
 
-.large-enemy:hover {
+.circle:hover {
+    opacity: 0.8;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 30px solid blue;
+}
+
+.triangle:hover {
     opacity: 0.8;
 }
 

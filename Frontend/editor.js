@@ -84,6 +84,13 @@ $(function () {
     })
   );
 
+  $("#add-triangle").click(() => {
+    createBlock("triangle", {
+      top: 0,
+      left: 0,
+    })
+  })
+
   $("#clear-blocks").click(() => {
     if (confirm("Are you sure you want to clear all blocks from the window?")) {
       clearBlocks();
@@ -151,6 +158,7 @@ $(function () {
     CreateLevel(levelData, ".small-enemy", "small-enemy");
     CreateLevel(levelData, ".large-enemy", "large-enemy");
     CreateLevel(levelData, ".circle", "circle");
+    CreateLevel(levelData, ".triangle", "triangle");
 
 
     if (levelData.length === 0) {
